@@ -1,8 +1,9 @@
 module.exports = {
+  publicPath: "/cultura-chupistica/",
   lintOnSave: false,
   transpileDependencies: ["vuex-persist"],
   pwa: {
-    name: "Titin App",
+    name: "Cultura Chupistica App",
     themeColor: "#4DBA87",
     msTileColor: "#000000",
     appleMobileWebAppCapable: "yes",
@@ -12,8 +13,8 @@ module.exports = {
       swSrc: "src/registerServiceWorker.js",
     },
     manifestOptions: {
-      name: "Titin App",
-      short_name: "Titin",
+      name: "Cultura Chupistica App",
+      short_name: "Cultura Chupistica",
       start_url: ".",
       display: "standalone",
       theme_color: "#ff0",
