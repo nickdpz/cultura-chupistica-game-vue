@@ -17,7 +17,7 @@
                   v-model="user"
                   type="text"
                   name="user"
-                  label-placeholder="Correo o Usuario"
+                  label-placeholder="Nombre"
                   state="success"
                   class="input-theme border-custom"
                   aria-label="Usuario"
