@@ -1,4 +1,4 @@
-# Cultura Chupistica-Frontend-Ecommerce-Operations
+# Cultura Chupistica
 
 ## Build Setup
 
