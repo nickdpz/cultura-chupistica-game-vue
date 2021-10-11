@@ -10,8 +10,8 @@ const state = {
     "Banco colombianos como: Banco de occidente",
     "Lugares turisticos colombianos como: Guatape",
     "Mascotas como: un gato",
-    "Deportes como: ciclismo", 
-    "Marcas de motos como: yamaha"
+    "Deportes como: ciclismo",
+    "Marcas de motos como: yamaha",
   ],
 };
 
