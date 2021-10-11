@@ -1,0 +1,9 @@
+{
+  "all": true,
+  "check-coverage": true,
+  "extension": [".vue", ".js"],
+  "lines": 85,
+  "statements": 85,
+  "temp-dir": "coverage/.nyc_output",
+  "reporter": ["locv", "text"]
+}

@@ -1,0 +1,70 @@
+{
+  "name": "operations",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "test": "vue-cli-service test:unit",
+    "start": "serve -s dist",
+    "coverage": "nyc -r lcov -r text -e \".ts,.js,.vue\" -x \"test/**/**.spec.js\" npm run test",
+    "lint": "eslint --ext \".ts,.js,.vue\" --ignore-path .gitignore .",
+    "lint:fix": "eslint --ext \".ts,.js,.vue\" --ignore-path .gitignore . --fix",
+    "prettier": "prettier '*/**/*.(json|js|ts|vue)' --check",
+    "prettier:write": "prettier '*/**/*.(json|js|ts|vue)' --write",
+    "style": "stylelint \"**/*.{vue,css}\" --ignore-path .gitignore",
+    "style:fix": "stylelint \"**/*.{vue,css}\" --ignore-path .gitignore --fix"
+  },
+  "dependencies": {
+    "bootstrap": "^4.6.0",
+    "bootstrap-vue": "^2.21.2",
+    "core-js": "^3.6.5",
+    "js-base64": "^3.7.2",
+    "numeral": "^2.0.6",
+    "register-service-worker": "^1.7.1",
+    "vue": "^2.6.14",
+    "vue-fragment": "^1.5.2",
+    "vue-router": "^3.2.0",
+    "vue-sweetalert2": "^5.0.2",
+    "vuesax": "^4.0.1-alpha.25",
+    "vuex": "^3.4.0",
+    "vuex-persist": "^3.1.3"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-plugin-pwa": "~4.5.0",
+    "@vue/cli-plugin-router": "~4.5.0",
+    "@vue/cli-plugin-unit-jest": "~4.5.0",
+    "@vue/cli-plugin-vuex": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/eslint-config-prettier": "^6.0.0",
+    "@vue/test-utils": "^1.0.3",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-prettier-vue": "^3.1.0",
+    "eslint-plugin-vue": "^6.2.2",
+    "lint-staged": "^9.5.0",
+    "nyc": "^15.1.0",
+    "prettier": "^2.4.1",
+    "serve": "^12.0.1",
+    "stylelint": "^13.13.1",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-standard": "^22.0.0",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,jsx,vue}": [
+      "npm run lint:fix",
+      "npm run prettier:write"
+    ],
+    "*.{css,vue}": [
+      "npm run style:fix"
+    ]
+  }
+}
