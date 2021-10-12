@@ -55,8 +55,8 @@ export default {
     reset() {
       clearInterval(this.timer);
       this.active = false;
-      this.elapsedTime = 0;
       this.$emit("complete", this.initialCount - this.elapsedTime);
+      this.elapsedTime = 0;
     },
   },
 };
