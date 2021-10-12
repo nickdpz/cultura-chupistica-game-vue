@@ -43,6 +43,7 @@ const state = {
     "Marcas de cerveza que se venda en colombia como: poker",
     "Juegos de mesa como: parques",
     "Marcas de maletas como: totto",
+    "Lenguajes de programación como: typescript",
   ],
 };
 
