@@ -58,10 +58,13 @@
             A petición de
             {{ userOrderById.find(item => item.id == userTheme).name }}
           </small>
-          <h3 class="">{{ currentTheme }} Seleccionado por</h3>
-          <h3>
-            Vas tu {{ userOrderById.find(item => item.id == currentUser).name }}
-          </h3>
+          <h3 class="">{{ currentTheme }}</h3>
+          <div class="d-flex">
+            <h3>Vas tu&nbsp;</h3>
+            <h3 class="text-success">
+              {{ userOrderById.find(item => item.id == currentUser).name }}
+            </h3>
+          </div>
           <Chronometer @complete="nextUser" />
         </div>
         <div

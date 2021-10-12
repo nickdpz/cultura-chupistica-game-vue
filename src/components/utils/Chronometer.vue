@@ -34,8 +34,7 @@ export default {
   computed: {
     formattedElapsedTime() {
       if (Number(this.elapsedTime) === this.initialCount) {
-        this.stop();
-        this.$emit("complete", 0);
+        this.reset();
       }
       return Number(this.initialCount - this.elapsedTime).toFixed(0);
     },
@@ -50,7 +49,6 @@ export default {
     stop() {
       clearInterval(this.timer);
       this.active = false;
-      this.elapsedTime = 0;
     },
     reset() {
       clearInterval(this.timer);
