@@ -1,7 +1,7 @@
 <template>
   <main class="h-100 mb-5 pt-5">
     <navbar-app />
-    <div class="container mt-5 pt-4">
+    <div class="container-fluid mt-4 pt-4 h-80vh">
       <router-view></router-view>
     </div>
     <footer-app />

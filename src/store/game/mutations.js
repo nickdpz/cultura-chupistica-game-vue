@@ -5,8 +5,13 @@ const mutations = {
   ADD_USERS(stateUsers, payload) {
     stateUsers.users = [...stateUsers.users, ...payload];
   },
-  GET_USER(stateUsers, payload) {
-    stateUsers.product = stateUsers.users.find(item => item === payload);
+  UPDATE_USER_POINTS(stateUsers, payload) {
+    const users = stateUsers.users;
+    users[payload.i] = {
+      ...stateUsers.users[payload.i],
+      points: stateUsers.users[payload.i].points + payload.points,
+    };
+    stateUsers.users = users.sort((a, b) => b.id - a.id);
   },
 };
 

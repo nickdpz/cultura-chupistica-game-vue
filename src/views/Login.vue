@@ -73,7 +73,9 @@ export default {
   methods: {
     ...mapMutations("game", ["SET_USERS"]),
     onClickNext() {
-      this.SET_USERS(this.users);
+      this.SET_USERS(
+        this.users.map((item, id) => ({ name: item, points: 0, id: id + 1 }))
+      );
       this.$router.push("/game");
     },
     addUser() {

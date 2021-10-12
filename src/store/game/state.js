@@ -1,5 +1,5 @@
 const state = {
-  users: [],
+  users: [{ name: "", points: 0, id: 0 }],
   user: "",
   themes: [
     "Cantantes de salsa como: Mark antony",

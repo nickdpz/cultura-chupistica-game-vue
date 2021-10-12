@@ -15,7 +15,17 @@ const routes = [
   {
     path: "/game",
     name: "Game",
-    component: Game,
+    component: () => import("../layouts/App.vue"),
+    children: [
+      {
+        path: "",
+        name: "IndexGame",
+        component: Game,
+        meta: {
+          pageTitle: "Inicio App",
+        },
+      },
+    ],
   },
   {
     path: "/not-found",

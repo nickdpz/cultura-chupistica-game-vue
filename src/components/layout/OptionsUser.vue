@@ -65,14 +65,13 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from "vuex";
 export default {
   name: "OptionsUser",
   data: () => ({
     showOptions: false,
+    role: "adminstrator",
   }),
   computed: {
-    ...mapState("auth", ["role"]),
     notUser() {
       return this.role === "";
     },
@@ -83,7 +82,6 @@ export default {
     },
   },
   methods: {
-    ...mapMutations("auth", ["CLEAR_AUTH"]),
     routePush(path) {
       this.showOptions = false;
       return this.$router.push(path);
@@ -98,7 +96,6 @@ export default {
         confirmButtonText: "Si",
       });
       if (response.isConfirmed) {
-        this.CLEAR_AUTH();
         this.$router.push("/");
       }
     },

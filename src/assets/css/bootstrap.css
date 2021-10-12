@@ -133,3 +133,7 @@ option {
 .vs-textarea:focus {
     border-bottom: 2px solid rgba(var(--vs-primary), 1);
 }
+
+.h-80vh {
+    height: 84vh;
+}

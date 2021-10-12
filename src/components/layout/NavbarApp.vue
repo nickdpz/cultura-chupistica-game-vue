@@ -2,8 +2,13 @@
   <div class="d-block">
     <vs-navbar v-model="active" padding-scroll shadow center-collapsed>
       <template #left>
-        <router-link to="/" class="mx-3" aria-label="Inicio"> 😆 </router-link>
+        <router-link to="/" class="mx-3" aria-label="Inicio">
+          Inicio 😆
+        </router-link>
       </template>
+      <div>
+        <h1>Cultura Chupistica 🍻🍻 ‼️</h1>
+      </div>
       <template #right>
         <change-theme />
         <options-user />
