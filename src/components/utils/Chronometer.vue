@@ -23,6 +23,7 @@ export default {
       elapsedTime: 0,
       timer: undefined,
       active: false,
+      sound: null,
     };
   },
   props: {
@@ -42,6 +43,9 @@ export default {
   methods: {
     start() {
       this.active = true;
+      this.sound = this.$sounds.get("clock");
+      this.sound.volume(0.08);
+      this.sound.play();
       this.timer = setInterval(() => {
         this.elapsedTime += 1;
       }, 1000);
@@ -49,12 +53,14 @@ export default {
     stop() {
       clearInterval(this.timer);
       this.active = false;
+      if (this.sound) this.sound.stop();
     },
     reset() {
       clearInterval(this.timer);
       this.active = false;
       this.$emit("complete", this.initialCount - this.elapsedTime);
       this.elapsedTime = 0;
+      if (this.sound) this.sound.stop();
     },
   },
 };

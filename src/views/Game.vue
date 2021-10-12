@@ -3,8 +3,8 @@
     <div class="row h-100">
       <div
         class="
-          col-3
-          h-100
+          col-lg-3 col-xl-3 col-12
+          h-lg-100 h-xl-100
           border-right border-primary
           d-flex
           flex-column
@@ -42,7 +42,7 @@
           </tbody>
         </table>
       </div>
-      <div class="col-8 h-100">
+      <div class="col-xl-8 col-lg-8 col-12 h-100">
         <div
           class="
             content-main-game
@@ -51,6 +51,7 @@
             align-items-center
             justify-content-around
             h-100
+            my-2
           "
           v-if="startedProcess"
         >
@@ -204,6 +205,7 @@ export default {
     currentTheme: "",
     activeShop: false,
     activeGameOver: false,
+    clockSoundInstance: null,
   }),
   methods: {
     reset() {
@@ -223,6 +225,9 @@ export default {
     selectTheme() {
       this.activeSelectTheme = true;
       this.timeSelect = 0;
+      const sound = this.$sounds.get("theme");
+      sound.volume(0.08);
+      sound.play();
       this.timerSelect = setInterval(() => {
         this.timeSelect += 1;
         if (this.activeCardSelect === 3) {
@@ -230,7 +235,7 @@ export default {
         } else {
           this.activeCardSelect += 1;
         }
-        if (this.timeSelect === 15) {
+        if (this.timeSelect === 12) {
           this.activeCardSelect = 0;
           this.mainTheme[0] = this.generateRandomThemes();
           this.mainTheme[1] = this.generateRandomThemes();
@@ -265,11 +270,18 @@ export default {
     continueUser(count, theme) {
       if (theme && count === theme) {
         this.activeShop = true;
+        const sound = this.$sounds.get("beer");
+        sound.volume(0.08);
+        sound.play();
         if (this.userOrderById.length > this.userTheme) {
           this.userTheme += 1;
         } else {
           this.userTheme = 1;
         }
+      } else {
+        const sound = this.$sounds.get("next");
+        sound.volume(0.08);
+        sound.play();
       }
       if (this.userOrderById.length > count) {
         count += 1;
