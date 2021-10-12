@@ -3,6 +3,7 @@ const state = {
   user: "",
   themes: [
     "Cantantes de salsa como: Mark antony",
+    "Capitales de euro tales como: Madrid",
     "Cantes de ranchera como: Vicente Fernandez",
     "Platos colombianos como: la changua",
     "Villancicos como: Ana nanita nana",
