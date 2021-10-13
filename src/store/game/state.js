@@ -16,6 +16,7 @@ const state = {
     "Marcas de carros americanas como: chevrolet",
     "Equipos de futbol alemanes como: Bayer de Munich",
     "Peliculas de terror como: anabelle",
+    "Deportes en equipo como: futbol",
     "Juegos en linea como: fornite",
     "Series de anime como: naruto",
     "Series de netflix como: la casa de papel",
