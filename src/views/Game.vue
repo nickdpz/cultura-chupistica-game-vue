@@ -287,7 +287,7 @@ export default {
       if (
         (this.mode === "2" &&
           this.currentUserTheme === this.currentUserRound) ||
-        (this.mode === "1" && !points)
+        (this.mode === "1" && points === 0)
       ) {
         if (this.userOrderById.length > this.currentUserTheme) {
           this.currentUserTheme += 1;

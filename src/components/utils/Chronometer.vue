@@ -34,7 +34,7 @@ export default {
   props: {
     initialCount: {
       type: Number,
-      default: 15,
+      default: 17,
     },
   },
   computed: {
