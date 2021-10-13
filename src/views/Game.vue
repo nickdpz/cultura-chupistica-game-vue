@@ -13,6 +13,13 @@
       >
         <div class="d-flex justify-content-between">
           <h2 class="mt-5">Puntaje</h2>
+          <h5 class="my-2 text-warning">
+            {{
+              mode === 1
+                ? "Tema nuevo cuando se corcha a alguien"
+                : "Tema nuevo por ronda"
+            }}
+          </h5>
           <div class="d-flex align-items-end">
             <vs-button transparent @click="reset">🔃</vs-button>
           </div>
@@ -165,7 +172,7 @@
     </vs-dialog>
     <vs-dialog blur v-model="activeShop" @close="closeShop">
       <h1>
-        {{ this.userOrderByPoints.at(-1).name }}
+        {{ userNameShop }}
       </h1>
       <img
         src="https://c.tenor.com/l5IT_IveuyYAAAAd/beer-meet.gif"
@@ -207,6 +214,7 @@ export default {
     activeShop: false,
     activeGameOver: false,
     clockSoundInstance: null,
+    userNameShop: "",
   }),
   methods: {
     reset() {
@@ -288,16 +296,19 @@ export default {
         (this.mode === 2 && this.currentUserTheme === this.currentUserRound) ||
         (this.mode === 1 && points === 0)
       ) {
+        if (this.mode === 1) {
+          this.userNameShop = this.users.find(
+            item => item.id === this.currentUserRound
+          ).name;
+        } else if (this.mode === 2) {
+          this.userNameShop = this.userOrderByPoints.at(-1).name;
+        }
         if (this.userOrderById.length > this.currentUserTheme) {
           this.currentUserTheme += 1;
         } else {
           this.currentUserTheme = 1;
         }
-        const aux = JSON.parse(
-          JSON.stringify({ number: this.currentUserTheme })
-        );
-        console.log(aux);
-        this.currentUserRound = aux.number;
+        this.currentUserRound = Number(this.currentUserTheme);
         this.activeShop = true;
         if (this.activeSound) {
           const sound = this.$sounds.get("beer");
