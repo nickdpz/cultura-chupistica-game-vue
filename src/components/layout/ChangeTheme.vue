@@ -1,5 +1,5 @@
 <template>
-  <div class="shadow border-radius-sw">
+  <div class="shadow border-radius-sw mx-2">
     <vs-switch
       v-model="activeDarkMode"
       :dark="!activeDarkMode"

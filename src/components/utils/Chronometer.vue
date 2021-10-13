@@ -1,8 +1,12 @@
 <template>
   <div class="d-flex container-timer">
     <div class="col-4 d-flex flex-column justify-content-center">
-      <vs-button transparent class="my-2" @click="start">Inicio</vs-button>
-      <vs-button transparent class="my-2" @click="stop">Detener</vs-button>
+      <vs-button transparent class="my-2" @click="start" :disabled="active">
+        Inicio
+      </vs-button>
+      <vs-button transparent class="my-2" @click="stop" :disabled="!active">
+        Detener
+      </vs-button>
     </div>
     <div class="col-4">
       <span class="timer text-center">{{ formattedElapsedTime }}</span>
@@ -16,6 +20,7 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
   name: "Chronometer",
   data() {
@@ -33,6 +38,7 @@ export default {
     },
   },
   computed: {
+    ...mapState("control", ["activeSound"]),
     formattedElapsedTime() {
       if (Number(this.elapsedTime) === this.initialCount) {
         this.reset();
@@ -43,9 +49,11 @@ export default {
   methods: {
     start() {
       this.active = true;
-      this.sound = this.$sounds.get("clock");
-      this.sound.volume(0.08);
-      this.sound.play();
+      if (this.activeSound) {
+        this.sound = this.$sounds.get("clock");
+        this.sound.volume(0.2);
+        this.sound.play();
+      }
       this.timer = setInterval(() => {
         this.elapsedTime += 1;
       }, 1000);
@@ -75,5 +83,6 @@ export default {
 .container-timer {
   height: 7rem;
   width: 20rem;
+  margin: 0rem 0 4rem 0;
 }
 </style>

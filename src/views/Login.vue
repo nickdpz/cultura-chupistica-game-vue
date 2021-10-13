@@ -1,8 +1,8 @@
 <template>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-10 col-lg-8 col-xl-8 col-12 mx-auto">
-        <div class="card-custom-1 mt-4 text-center border-success">
+  <main>
+    <div class="container">
+      <div class="col-md-10 col-lg-8 col-xl-8 col-12 mx-auto mt-4">
+        <div class="mt-4 text-center">
           <div class="card-header">
             <h1 class="h3 text-success">
               Ingresa los nombres de los jugadores
@@ -36,8 +36,15 @@
                 Siguiente
               </vs-button>
             </div>
+            <div class="col-12 my-4 d-flex justify-content-center">
+              <vs-radio v-model="mode" val="1"> Extendido </vs-radio>
+              <vs-radio success v-model="mode" val="2">
+                Tema Recurrente
+              </vs-radio>
+            </div>
             <div class="my-4 row d-flex justify-content-center">
               <change-theme />
+              <change-sound />
             </div>
           </div>
         </div>
@@ -55,11 +62,16 @@
         </div>
       </div>
     </div>
-  </div>
+    <footer class="footer text-center w-100 py-3">
+      <router-link to="/game">Jugadores pasados</router-link>
+    </footer>
+  </main>
 </template>
 
 <script>
 import ChangeTheme from "@/components/layout/ChangeTheme";
+import ChangeSound from "@/components/layout/ChangeSound";
+
 import { mapMutations } from "vuex";
 export default {
   name: "LoginView",
@@ -67,11 +79,17 @@ export default {
     return {
       user: "",
       users: [],
+      mode: "1",
     };
   },
-  components: { ChangeTheme },
+  watch: {
+    mode(value) {
+      this.SET_MODE(value);
+    },
+  },
+  components: { ChangeTheme, ChangeSound },
   methods: {
-    ...mapMutations("game", ["SET_USERS"]),
+    ...mapMutations("game", ["SET_USERS", "SET_MODE"]),
     onClickNext() {
       this.SET_USERS(
         this.users.map((item, id) => ({ name: item, points: 0, id: id + 1 }))
