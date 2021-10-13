@@ -97,8 +97,10 @@ export default {
       this.$router.push("/game");
     },
     addUser() {
-      this.users.push(this.user);
-      this.user = "";
+      if (this.user !== "") {
+        this.users.push(this.user);
+        this.user = "";
+      }
     },
   },
 };

@@ -222,6 +222,7 @@ export default {
     startProcess() {
       this.startedProcess = true;
       this.selectTheme();
+      this.continueUserRound();
     },
     selectTheme() {
       this.activeSelectTheme = true;
@@ -249,7 +250,6 @@ export default {
     },
     choiceTheme(itemTheme) {
       this.currentTheme = this.mainTheme[itemTheme];
-      this.continueUserRound();
       this.activeSelectTheme = false;
     },
     generateRandomThemes() {
@@ -294,6 +294,11 @@ export default {
         } else {
           this.currentUserTheme = 1;
         }
+        const aux = JSON.parse(
+          JSON.stringify({ number: this.currentUserTheme })
+        );
+        console.log(aux);
+        this.currentUserRound = aux.number;
         this.activeShop = true;
         if (this.activeSound) {
           const sound = this.$sounds.get("beer");
