@@ -11,8 +11,13 @@
           justify-content-center
         "
       >
-        <div class="d-flex justify-content-between">
-          <h2 class="mt-5">Puntaje</h2>
+        <div
+          class="d-flex flex-column justify-content-between align-items-start"
+        >
+          <div class="d-flex align-items-end">
+            <h2 class="mt-5">Puntaje</h2>
+            <vs-button transparent @click="reset">🔃</vs-button>
+          </div>
           <h5 class="my-2 text-warning">
             {{
               mode === 1
@@ -20,9 +25,6 @@
                 : "Tema nuevo por ronda"
             }}
           </h5>
-          <div class="d-flex align-items-end">
-            <vs-button transparent @click="reset">🔃</vs-button>
-          </div>
         </div>
         <table class="table table-bordered text-base">
           <thead>
