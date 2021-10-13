@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "1f3304611500ad4d9380",
+    "revision": "b8fa41591c97298a7e7e",
     "url": "/cultura-chupistica/css/app.0b12c5cd.css"
   },
   {
@@ -8,12 +8,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/cultura-chupistica/css/chunk-vendors.ec4a1505.css"
   },
   {
-    "revision": "d64890c73a4f919ffa84427a3e47239b",
+    "revision": "ef358f9b7dbf705db01ff98e731245e5",
     "url": "/cultura-chupistica/index.html"
   },
   {
-    "revision": "1f3304611500ad4d9380",
-    "url": "/cultura-chupistica/js/app.fc025902.js"
+    "revision": "b8fa41591c97298a7e7e",
+    "url": "/cultura-chupistica/js/app.e44eb727.js"
   },
   {
     "revision": "a7b65627db0263cf803a",
