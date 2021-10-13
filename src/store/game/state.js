@@ -2,6 +2,7 @@ const state = {
   users: [{ name: "", points: 0, id: 0 }],
   user: "",
   themes: [
+    "Lugares turisticos de europa como: Torre Eafiel",
     "Cantantes de salsa como: Mark antony",
     "Capitales de euro tales como: Madrid",
     "Cantes de ranchera como: Vicente Fernandez",
