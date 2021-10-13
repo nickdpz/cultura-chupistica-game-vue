@@ -37,9 +37,11 @@
               </vs-button>
             </div>
             <div class="col-12 my-4 d-flex justify-content-center">
-              <vs-radio v-model="mode" val="1"> Extendido </vs-radio>
+              <vs-radio v-model="mode" val="1">
+                Tema nuevo cuando se corcha a alguien
+              </vs-radio>
               <vs-radio success v-model="mode" val="2">
-                Tema Recurrente
+                Tema nuevo por ronda
               </vs-radio>
             </div>
             <div class="my-4 row d-flex justify-content-center">
