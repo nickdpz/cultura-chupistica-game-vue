@@ -206,6 +206,7 @@ export default {
     currentTheme: "",
     activeShop: false,
     activeGameOver: false,
+    clockSoundInstance: null,
   }),
   methods: {
     reset() {
