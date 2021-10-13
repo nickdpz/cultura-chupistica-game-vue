@@ -3,8 +3,8 @@
     <div class="row h-100">
       <div
         class="
-          col-3
-          h-100
+          col-lg-3 col-xl-3 col-12
+          h-lg-100 h-xl-100
           border-right border-primary
           d-flex
           flex-column
@@ -42,7 +42,7 @@
           </tbody>
         </table>
       </div>
-      <div class="col-8 h-100">
+      <div class="col-xl-8 col-lg-8 col-12 h-100">
         <div
           class="
             content-main-game
@@ -51,18 +51,19 @@
             align-items-center
             justify-content-around
             h-100
+            my-2
           "
           v-if="startedProcess"
         >
           <small>
             A petición de
-            {{ userOrderById.find(item => item.id == userTheme).name }}
+            {{ userOrderById.find(item => item.id == currentUserTheme).name }}
           </small>
           <h3 class="">{{ currentTheme }}</h3>
           <div class="d-flex">
             <h3>Vas tu&nbsp;</h3>
             <h3 class="text-success">
-              {{ userOrderById.find(item => item.id == currentUser).name }}
+              {{ userOrderById.find(item => item.id == currentUserRound).name }}
             </h3>
           </div>
           <Chronometer @complete="nextUser" />
@@ -91,7 +92,7 @@
       <template #header>
         <h1 class="mt-4 text-warning text-center">
           Selecciona
-          {{ userOrderById.find(item => item.id === userTheme).name }} 🔥
+          {{ userOrderById.find(item => item.id === currentUserTheme).name }} 🔥
         </h1>
       </template>
       <div class="w-50vh h-30vh container">
@@ -184,7 +185,8 @@ export default {
     Chronometer,
   },
   computed: {
-    ...mapState("game", ["users", "themes"]),
+    ...mapState("game", ["users", "themes", "mode"]),
+    ...mapState("control", ["activeSound"]),
   },
   mounted() {
     this.userOrderByPoints = this.users;
@@ -193,8 +195,8 @@ export default {
   data: () => ({
     userOrderByPoints: [{ name: "", id: 1, points: 0 }],
     userOrderById: [{ name: "", id: 1, points: 0 }],
-    userTheme: 1,
-    currentUser: 1,
+    currentUserTheme: 1,
+    currentUserRound: 1,
     activeSelectTheme: false,
     startedProcess: false,
     timerSelect: null,
@@ -209,8 +211,8 @@ export default {
     reset() {
       this.userOrderByPoints = this.users.map(item => ({ ...item, points: 0 }));
       this.userOrderById = this.users;
-      this.currentUser = 1;
-      this.userTheme = 1;
+      this.currentUserRound = 1;
+      this.currentUserTheme = 1;
       this.activeCardSelect = 0;
       this.activeShop = false;
       this.activeSelectTheme = false;
@@ -223,6 +225,11 @@ export default {
     selectTheme() {
       this.activeSelectTheme = true;
       this.timeSelect = 0;
+      if (this.activeSound) {
+        const sound = this.$sounds.get("theme");
+        sound.volume(0.2);
+        sound.play();
+      }
       this.timerSelect = setInterval(() => {
         this.timeSelect += 1;
         if (this.activeCardSelect === 3) {
@@ -230,7 +237,7 @@ export default {
         } else {
           this.activeCardSelect += 1;
         }
-        if (this.timeSelect === 15) {
+        if (this.timeSelect === 12) {
           this.activeCardSelect = 0;
           this.mainTheme[0] = this.generateRandomThemes();
           this.mainTheme[1] = this.generateRandomThemes();
@@ -241,7 +248,7 @@ export default {
     },
     choiceTheme(itemTheme) {
       this.currentTheme = this.mainTheme[itemTheme];
-      this.currentUser = this.continueUser(this.currentUser);
+      this.continueUserRound();
       this.activeSelectTheme = false;
     },
     generateRandomThemes() {
@@ -250,33 +257,49 @@ export default {
     },
     nextUser(points) {
       const i = this.userOrderById.findIndex(
-        item => item.id === this.currentUser
+        item => item.id === this.currentUserRound
       );
       this.userOrderById[i].points = this.userOrderById[i].points + points;
       this.userOrderByPoints = this.userOrderById.sort(
         (a, b) => b.points - a.points
       );
-      this.currentUser = this.continueUser(this.currentUser, this.userTheme);
+      this.continueUserTheme(points);
+      this.continueUserRound();
     },
     closeShop() {
       this.activeSelectTheme = true;
       this.selectTheme();
     },
-    continueUser(count, theme) {
-      if (theme && count === theme) {
-        this.activeShop = true;
-        if (this.userOrderById.length > this.userTheme) {
-          this.userTheme += 1;
+    continueUserRound() {
+      if (this.activeSound) {
+        const sound = this.$sounds.get("next");
+        sound.volume(0.2);
+        sound.play();
+      }
+      if (this.userOrderById.length > this.currentUserRound) {
+        this.currentUserRound += 1;
+      } else {
+        this.currentUserRound = 1;
+      }
+    },
+    continueUserTheme(points) {
+      if (
+        (this.mode === "2" &&
+          this.currentUserTheme === this.currentUserRound) ||
+        (this.mode === "1" && !points)
+      ) {
+        if (this.userOrderById.length > this.currentUserTheme) {
+          this.currentUserTheme += 1;
         } else {
-          this.userTheme = 1;
+          this.currentUserTheme = 1;
+        }
+        this.activeShop = true;
+        if (this.activeSound) {
+          const sound = this.$sounds.get("beer");
+          sound.volume(0.2);
+          sound.play();
         }
       }
-      if (this.userOrderById.length > count) {
-        count += 1;
-      } else {
-        count = 1;
-      }
-      return count;
     },
   },
 };

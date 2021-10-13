@@ -13,6 +13,9 @@ const mutations = {
     };
     stateUsers.users = users.sort((a, b) => b.id - a.id);
   },
+  SET_MODE(stateUsers, payload) {
+    stateUsers.mode = payload;
+  },
 };
 
 export default mutations;

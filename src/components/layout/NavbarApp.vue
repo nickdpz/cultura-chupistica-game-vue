@@ -10,6 +10,7 @@
         <h1>Cultura Chupistica 🍻🍻 ‼️</h1>
       </div>
       <template #right>
+        <change-sound />
         <change-theme />
         <options-user />
       </template>
@@ -20,11 +21,11 @@
 <script>
 import { mapState } from "vuex";
 import ChangeTheme from "./ChangeTheme";
-
+import ChangeSound from "./ChangeSound";
 import OptionsUser from "./OptionsUser";
 export default {
   name: "NavbarApp",
-  components: { ChangeTheme, OptionsUser },
+  components: { ChangeTheme, ChangeSound, OptionsUser },
   data: () => ({
     active: true,
   }),

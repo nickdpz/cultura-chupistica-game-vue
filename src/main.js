@@ -2,6 +2,11 @@ import Vue from "vue";
 import Vuesax from "vuesax";
 import App from "./App.vue";
 import VueSweetalert2 from "vue-sweetalert2";
+import sounds from "vue-sounds";
+import clockSound from "./assets/sounds/mixkit-tick-tock-clock-timer-1045.wav";
+import beerSound from "./assets/sounds/mixkit-small-crowd-ovation-437.wav";
+import themeSound from "./assets/sounds/mixkit-retro-video-game-bubble-laser-277.wav";
+import nextSound from "./assets/sounds/mixkit-bubbly-achievement-tone-3193.wav";
 import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
 import { Plugin } from "vue-fragment";
 import "./registerServiceWorker";
@@ -31,6 +36,26 @@ Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
 Vue.use(Plugin);
 
+Vue.use(sounds, store, {
+  sounds: [
+    {
+      name: "clock",
+      url: clockSound,
+    },
+    {
+      name: "theme",
+      url: themeSound,
+    },
+    {
+      name: "beer",
+      url: beerSound,
+    },
+    {
+      name: "next",
+      url: nextSound,
+    },
+  ],
+});
 new Vue({
   router,
   store,

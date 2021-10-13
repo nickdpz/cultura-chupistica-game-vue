@@ -3,6 +3,7 @@ const state = {
   user: "",
   themes: [
     "Cantantes de salsa como: Mark antony",
+    "Capitales de euro tales como: Madrid",
     "Cantes de ranchera como: Vicente Fernandez",
     "Platos colombianos como: la changua",
     "Villancicos como: Ana nanita nana",
@@ -30,7 +31,7 @@ const state = {
     "Novelas colombianas como: vecinos",
     "Marcas de bicicletas como: gw",
     "Frutas en la gama de colores del amarillo como: banano",
-    "Frutas en la gama de colores del rojo como: banano",
+    "Frutas en la gama de colores del rojo como: manzana",
     "Redes sociales como: fabebook",
     "Paises de america latina como: Colombia",
     "Paises de europa como: Francia",
@@ -38,12 +39,15 @@ const state = {
     "Paises de africa como: Nigeria",
     "Villanos en peliculas de super heroes como: joker",
     "Marcas de esmaltes como: masglo",
+    "Montañas como: Everest",
+    "Nevados como: Nevado de ruiz",
     "Platos de navidad como: la natilla",
     "Tipos de cerveza como: ipa",
     "Marcas de cerveza que se venda en colombia como: poker",
     "Juegos de mesa como: parques",
     "Marcas de maletas como: totto",
   ],
+  mode: 1,
 };
 
 export default state;
