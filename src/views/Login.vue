@@ -79,12 +79,12 @@ export default {
     return {
       user: "",
       users: [],
-      mode: "1",
+      mode: 1,
     };
   },
   watch: {
     mode(value) {
-      this.SET_MODE(value);
+      this.SET_MODE(Number(value));
     },
   },
   components: { ChangeTheme, ChangeSound },
