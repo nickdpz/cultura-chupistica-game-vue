@@ -67,7 +67,21 @@ const state = {
     "Elementos de cocina como: Cuchara",
     "Animales extintos como: Dinosaurio",
     "Nombre de pueblos indigenas como: Los Mayas",
-    "Nombre planetas como: Saturno"
+    "Nombre planetas como: Saturno",
+    "Parques naturales de Colombia como: Tayrona",
+    "Lugares turisticos de europa como: Notre Dame",
+    "Lugares turisticos de europa como: Fontana de Trevi",
+    "Lugares turisticos de europa como: Palacio Hofburg",
+    "Razas de perros como: Golden Retriever",
+    "Marcas de zapato como: Nike",
+    "Lugares turisticos de suramerica como: Machu Pichu",
+    "Lugares de vacaciones como: Riviera Maya",
+    "Carnavales del mundo como: Carnaval de Barranquilla",
+    "Deportista colombianos como: Catherine Ibarguen",
+    "Platos del mundo como: Lasagna",
+    "Animales de mar como: Tiburon",
+    "Animales de rio como: Cocodrilo",
+    "Marcas de Carros como: Ferrari"
   ],
   mode: 1,
 };
