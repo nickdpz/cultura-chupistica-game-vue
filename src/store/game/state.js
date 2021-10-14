@@ -59,7 +59,15 @@ const state = {
     "Nombres de emisoras como: Candela",
     "Nombres de aeropuertos como: El dorado",
     "Tipo de calzado como: Tennis",
-    "Deportistas Colombianos",
+    "Deportistas Colombianos como: Radamel Falcao Garcia",
+    "Marcas de celulares como:  Huawei",
+    "Profesiones como: Arquitecto",
+    "Herramientas de construccion como: Martillo",
+    "Razas de perros como: Pincher",
+    "Elementos de cocina como: Cuchara",
+    "Animales extintos como: Dinosaurio",
+    "Nombre de pueblos indigenas como: Los Mayas",
+    "Nombre planetas como: Saturno"
   ],
   mode: 1,
 };
