@@ -11,7 +11,7 @@
 
           <div class="card-body">
             <div class="d-flex">
-              <div class="col-8">
+              <div class="col-12">
                 <vs-input
                   id="user"
                   v-model="user"
@@ -23,18 +23,11 @@
                   aria-label="Usuario"
                   icon-after
                   @keyup.enter="addUser"
+                  @click-icon="addUser"
                 >
                   <template #icon> 🐵 </template>
                 </vs-input>
               </div>
-              <vs-button
-                :disabled="!users.length"
-                block
-                @click="onClickNext"
-                class="col-4"
-              >
-                Siguiente
-              </vs-button>
             </div>
             <div class="col-12 my-4 d-flex justify-content-center">
               <vs-radio v-model="mode" val="1">
@@ -51,16 +44,32 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-4" v-for="(us, i) in users" :key="i">
+          <div
+            class="col-lg-4 col-xl-4 col-6"
+            v-for="(us, i) in usersComponet"
+            :key="i"
+          >
             <div
-              class="badge my-2 mx-2 w-100"
+              class="badge my-2 mx-2 w-100 d-flex justify-content-between"
               :class="i % 2 ? 'badge-success' : 'badge-primary'"
             >
               <h2 class="w-100 text-center">
                 {{ us }}
               </h2>
+              <vs-button transparent @click="removeUser(us)"> 🗑️ </vs-button>
             </div>
           </div>
+        </div>
+
+        <div class="mt-5 d-flex justify-content-center">
+          <vs-button
+            :disabled="!usersComponet.length"
+            block
+            @click="onClickNext"
+            class="col-4"
+          >
+            Siguiente ✔️
+          </vs-button>
         </div>
       </div>
     </div>
@@ -74,15 +83,23 @@
 import ChangeTheme from "@/components/layout/ChangeTheme";
 import ChangeSound from "@/components/layout/ChangeSound";
 
-import { mapMutations } from "vuex";
+import { mapMutations, mapState } from "vuex";
 export default {
   name: "LoginView",
   data() {
     return {
       user: "",
-      users: [],
+      usersComponet: [],
       mode: 1,
     };
+  },
+  mounted() {
+    this.usersComponet = this.users
+      .filter(user => user.name !== "")
+      .map(user => user.name);
+  },
+  computed: {
+    ...mapState("game", ["users"]),
   },
   watch: {
     mode(value) {
@@ -93,20 +110,35 @@ export default {
   methods: {
     ...mapMutations("game", ["SET_USERS", "SET_MODE"]),
     onClickNext() {
-      if (this.users.length > 1) {
+      if (this.usersComponet.length > 1) {
         this.$router.push("/game");
         this.SET_USERS(
-          this.users.map((item, id) => ({ name: item, points: 0, id: id + 1 }))
+          this.usersComponet.map((item, id) => ({
+            name: item,
+            points: 0,
+            id: id + 1,
+          }))
         );
       } else {
         this.$swal("Minimo dos usuarios");
       }
     },
     addUser() {
-      if (this.user !== "") {
-        this.users.push(this.user);
+      const res = this.usersComponet.find(user => {
+        return user === this.user;
+      });
+      if (this.user !== "" && !res) {
+        this.usersComponet.push(this.user);
         this.user = "";
+      } else {
+        this.$swal("Ingrese un usuario valido");
       }
+    },
+    removeUser(name) {
+      const res = this.usersComponet.findIndex(user => {
+        return user === name;
+      });
+      this.usersComponet.splice(res, 1);
     },
   },
 };
