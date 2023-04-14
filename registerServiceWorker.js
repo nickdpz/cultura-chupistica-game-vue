@@ -1,4 +1,4 @@
-importScripts("/cultura-chupistica/precache-manifest.482470c0a9e4484f0e3bac820e958561.js", "https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
+importScripts("/cultura-chupistica-game-vue/precache-manifest.f4c8af0adbf696cedb59f743a96b14ac.js", "https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 /* eslint-disable no-console */
 
