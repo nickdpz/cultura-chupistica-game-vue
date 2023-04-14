@@ -92,7 +92,7 @@ const state = {
     "Platos del mundo como: Lasagna",
     "Animales de mar como: Tiburon",
     "Animales de rio como: Cocodrilo",
-    "Marcas de Carros como: Ferrari"
+    "Marcas de Carros como: Ferrari",
   ],
   mode: 1,
 };
