@@ -1,5 +1,5 @@
 module.exports = {
-  publicPath: "/cultura-chupistica/",
+  publicPath: "/cultura-chupistica-game-vue/",
   lintOnSave: false,
   transpileDependencies: ["vuex-persist"],
   pwa: {
